@@ -1,0 +1,98 @@
+import random
+File_object = open(r"C:\Users\Sumanth\PycharmProjects\pythonProject\input.txt","w+")
+File_object0 = open(r"C:\Users\Sumanth\PycharmProjects\pythonProject\Retrieved.txt","w")
+File_object1 = open(r"C:\Users\Sumanth\PycharmProjects\pythonProject\Stored1.txt","w")
+File_object2 = open(r"C:\Users\Sumanth\PycharmProjects\pythonProject\Retrieved1.txt","w")
+File_object3 = open(r"C:\Users\Sumanth\PycharmProjects\pythonProject\Stored2.txt","w")
+File_object4 = open(r"C:\Users\Sumanth\PycharmProjects\pythonProject\Retrieved2.txt","w")
+#Intelligent Cipher Technique 
+S=input("Enter Info Data: ")
+S= open("ct1.txt", 'r')
+print(S.read())
+print(S.readline())
+#File_object.write(S)
+File_object.close()
+File_object = open(r"C:\Users\Sumanth\PycharmProjects\pythonProject\info.txt","r")
+D=File_object.read()
+File_object1.writelines(["Info Data : ",D,"\r\n"])
+y=int(input("Enter division number to divide the info :"))
+#5650
+c=bin(y)[2:].zfill(len(D))
+r=bin(int(D,2)-int(c,2))[2:].zfill(len(D))
+print("Information after division to two parts :",r," ",c)
+key=bin(random.randrange(y,int(D,2)))[2:]
+print("Random key Generated is : ",key,"\r\n")
+File_object1.writelines(["Random Key : ",key,"\r\n"])
+cloudA=bin(int(c,2)^int(key,2))[2:].zfill(len(D))
+cloudB=bin(int(r,2)^int(key,2))[2:].zfill(len(D))
+#Data Storing in Cloud
+print("Data stored in clouds are :")
+print("Cloud A :",cloudA)
+print("Cloud B :",cloudB)
+File_object1.writelines(["Data stored in clouds are :","\r\n","cloudA :",cloudA,"\t","cloudB :",cloudB,"\r\n"])
+# Retrieving Data From Cloud Phase
+cloudAretrieval=bin(int(cloudA,2)^int(key,2))[2:].zfill(len(D))
+cloudBretrieval=bin(int(cloudB,2)^int(key,2))[2:].zfill(len(D))
+print("Data retrieved from clouds are :")
+print("Cloud A :",cloudAretrieval)
+print("Cloud B :",cloudBretrieval)
+File_object2.writelines(["Retrieving Data From Cloud Phase :","\r\n","cloud A retrieval Data:",cloudAretrieval,"\t","cloud B retrieval Data:",cloudBretrieval,"\r\n"])
+sum=bin(int(cloudAretrieval,2)+int(cloudBretrieval,2))[2:].zfill(len(D))
+sum1=bin(int(sum,2)^int(key,2))[2:].zfill(len(D))
+#Obtaining the original data
+original=bin(int(sum1,2)^int(key,2))[2:].zfill(len(D))
+print("Original data obtained is: : ",original)
+File_object1.writelines(["Original data obtained is :",original])
+if(original==D):
+    print("Success--The input data is equal to finally Obtained original data\n")
+else:
+    print("failed--The input data is not equal to finally Obtained original data")
+
+
+S=input("Enter Info Data: ")
+S= open("ct2.txt", 'r')
+print(S.read())
+print(S.readline())
+#File_object.write(S)
+File_object0.close()
+File_object0 = open(r"C:\Users\Sumanth\PycharmProjects\pythonProject\info.txt","r")
+D=File_object0.read()
+File_object3.writelines(["Info Data : ",D,"\r\n"])
+y=int(input("Enter division number to divide the info :"))
+#5650
+c=bin(y)[2:].zfill(len(D))
+r=bin(int(D,2)-int(c,2))[2:].zfill(len(D))
+print("Information after division to two parts :",r," ",c)
+key=bin(random.randrange(y,int(D,2)))[2:]
+print("Random key Generated is : ",key,"\r\n")
+File_object3.writelines(["Random Key : ",key,"\r\n"])
+cloudA=bin(int(c,2)^int(key,2))[2:].zfill(len(D))
+cloudB=bin(int(r,2)^int(key,2))[2:].zfill(len(D))
+#Data Storing in Cloud
+print("Data stored in clouds are :")
+print("Cloud A :",cloudA)
+print("Cloud B :",cloudB)
+File_object3.writelines(["Data stored in clouds are :","\r\n","cloudA :",cloudA,"\t","cloudB :",cloudB,"\r\n"])
+# Retrieving Data From Cloud Phase
+cloudAretrieval=bin(int(cloudA,2)^int(key,2))[2:].zfill(len(D))
+cloudBretrieval=bin(int(cloudB,2)^int(key,2))[2:].zfill(len(D))
+print("Data retrieved from clouds are :")
+print("Cloud A :",cloudAretrieval)
+print("Cloud B :",cloudBretrieval)
+File_object4.writelines(["Retrieving Data From Cloud Phase :","\r\n","cloud A retrieval Data:",cloudAretrieval,"\t","cloud B retrieval Data:",cloudBretrieval,"\r\n"])
+sum=bin(int(cloudAretrieval,2)+int(cloudBretrieval,2))[2:].zfill(len(D))
+sum1=bin(int(sum,2)^int(key,2))[2:].zfill(len(D))
+#Obtaining the original data
+original=bin(int(sum1,2)^int(key,2))[2:].zfill(len(D))
+print("Original data obtained is: : ",original)
+File_object1.writelines(["Original data obtained is :",original])
+if(original==D):
+    print("Success--The input data is equal to finally Obtained original data")
+else:
+    print("failed--The input data is not equal to finally Obtained original data")
+File_object.close()
+File_object0.close()
+File_object1.close()
+File_object2.close()
+File_object3.close()
+File_object4.close()

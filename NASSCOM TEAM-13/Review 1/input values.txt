@@ -1,0 +1,4 @@
+r=3
+p=5
+q=7
+M=15(or any input)
